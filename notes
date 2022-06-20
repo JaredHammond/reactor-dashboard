@@ -1,0 +1,10 @@
+What I am envisioning:
+
+- A dashboard with a grid of squares that display reactor information
+- Basic info will be how full, how hot, maybe pressure?
+- Each info square will also be a button that brings you to the info page for a specific vessel.
+
+Vessel page
+
+- Vessel page will have a full-screen view of the reactor with histograms at the bottom for key values
+- Histograms will have buttons that set the time frame (10 min, 30 min, 1 hr, 8hr, 24hr etc)
