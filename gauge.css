@@ -1,0 +1,47 @@
+/*
+Starting place for gauge.
+*/
+
+:root {
+    --gauge-width: 150px;
+    --gauge-height: 200px;
+  }
+  
+  #wrapper {
+    position: relative;
+    height: var(--gauge-height);
+    width: var(--gauge-width);
+  }
+  
+  #outline {
+    height: 100%;
+    width: 100%;
+    border: calc(var(--gauge-height) / 20) solid lightblue;
+    border-radius: 150px;
+    z-index: 1;
+    position: absolute;
+    box-sizing: border-box;
+  }
+  
+  #fill {
+    height: calc(var(--gauge-height) - (var));
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    background: lightblue;
+    border-radius: 140px;
+    position: absolute;
+    z-index: -1;
+    
+  }
+  
+  #mask {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: white;
+    height: 10%;
+    z-index: 0;
+  }
+  
+  
