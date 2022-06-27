@@ -7,12 +7,18 @@ const UnstyledLevelGauge = ({level, className}: {level: number, className?: stri
   return (
     <svg className={className} ref={svgRef} width='75' height='100' viewBox='0 0 75 100'>
       <rect x='2.5' y='2.5' height='95' width='70' rx='100' ry='25' strokeWidth='5' stroke='green' fill='transparent' />
-      <rect x='7' y='7' height='86' width='61' rx='100' ry='21.78' fill='green' clipPath='url(#fillclip)' />
+      <text textAnchor='middle' fontSize='2rem' fill='red' transform='translate(37.5, 65)'>{level}%</text>
 
-      <text textAnchor='middle' fontSize='2rem' fill='white' transform='translate(37.5, 70)'>{level}%</text>
-      <defs>
-        <rect id='fillClip' x='7' y='7' height={level / 100 * 86} width='61' rx='100' ry='21.78'/>
-      </defs>
+      <g clipPath='url(#fillClip)'>
+        <rect x='7' y='7' height='86' width='61' rx='100' ry='21.78' fill='green'  />
+        <text textAnchor='middle' fontSize='2rem' fill='blue' transform='translate(37.5, 65)'>{level}%</text>
+        <defs>
+          <clipPath id='fillClip'>
+            <rect x='7' y={((100-level) / 100 * 86) + 7} height='100' width='61'/>
+          </clipPath>
+        </defs>
+      </g>
+
     </svg>
   )
 }
