@@ -22,7 +22,7 @@ function liquidFillGaugeDefaultSettings() {
     waveColor: "#178BCA", // The color of the fill wave.
     waveOffset: 0, // The amount to initially offset the wave. 0 = no offset. 1 = offset of one full wave.
     textVertPosition: 0.5, // The height at which to display the percentage text withing the wave circle. 0 = bottom, 1 = top.
-    textSize: .2, // The relative height of the text to display in the wave circle. 1 = 50%
+    textSize: 0.2, // The relative height of the text to display in the wave circle. 1 = 50%
     valueCountUp: true, // If true, the displayed value counts up from 0 to it's final value upon loading. If false, the final value is displayed.
     displayPercent: false, // If true, a % symbol is displayed after the value.
     textColor: "#045681", // The color of the value text when the wave does not overlap it.
@@ -33,10 +33,10 @@ function liquidFillGaugeDefaultSettings() {
   };
 }
 
-function loadLiquidFillGauge(elementId, value, config) {
+function loadLiquidFillGauge(gaugeElement, value, config) {
   if (config == null) config = liquidFillGaugeDefaultSettings();
 
-  var gauge = d3.select("#" + elementId);
+  var gauge = d3.select(gaugeElement);
 
   const width = parseInt(gauge.style("width"));
   const height = parseInt(gauge.style("height"));
@@ -72,8 +72,8 @@ function loadLiquidFillGauge(elementId, value, config) {
   const fillAreaMargin = outlineThickness + outlineFillGap;
   const fillAreaWidth = width - fillAreaMargin * 2;
   const fillAreaHeight = height - fillAreaMargin * 2;
-  const fillAreaToWidthRatio = fillAreaWidth / (width - outlineThickness)
-  console.log(fillAreaToWidthRatio)
+  const fillAreaToWidthRatio = fillAreaWidth / (width - outlineThickness);
+  console.log(fillAreaToWidthRatio);
 
   // var fillCircleMargin = circleThickness + circleFillGap;
   // var fillCircleRadius = radius - fillCircleMargin;
@@ -83,7 +83,7 @@ function loadLiquidFillGauge(elementId, value, config) {
   const waveClipCount = 1 + config.waveCount;
   const waveClipWidth = waveLength * waveClipCount;
 
-  console.log(waveClipCount, waveClipWidth)
+  console.log(waveClipCount, waveClipWidth);
 
   // Rounding functions so that the correct number of decimal places is always displayed as the value counts up.
   let textRounder = function (value) {
@@ -140,7 +140,6 @@ function loadLiquidFillGauge(elementId, value, config) {
   var gaugeGroup = gauge
     .append("g")
     .attr("transform", `translate(${locationXY},${locationXY})`);
-
 
   // Draw the outer reactor outline
   gaugeGroup
@@ -210,13 +209,13 @@ function loadLiquidFillGauge(elementId, value, config) {
     .attr("clip-path", "url(#clipWave" + elementId + ")");
   fillAreaGroup
     .append("rect")
-    .attr('x', fillAreaMargin)
-    .attr('y', fillAreaMargin)
-    .attr('height', fillAreaHeight)
-    .attr('width', fillAreaWidth)
-    .attr('rx', 100)
-    .attr('ry', fillAreaToWidthRatio * 25)
-    .style('fill', config.circleColor)
+    .attr("x", fillAreaMargin)
+    .attr("y", fillAreaMargin)
+    .attr("height", fillAreaHeight)
+    .attr("width", fillAreaWidth)
+    .attr("rx", 100)
+    .attr("ry", fillAreaToWidthRatio * 25)
+    .style("fill", config.circleColor);
 
   // Text where the wave does overlap.
   var text2 = fillAreaGroup
@@ -248,8 +247,7 @@ function loadLiquidFillGauge(elementId, value, config) {
   }
 
   // Make the wave rise. wave and waveGroup are separate so that horizontal and vertical movement can be controlled independently.
-  var waveGroupXPosition =
-    fillAreaMargin + fillAreaWidth - waveClipWidth;
+  var waveGroupXPosition = fillAreaMargin + fillAreaWidth - waveClipWidth;
   if (config.waveRise) {
     waveGroup
       .attr(
