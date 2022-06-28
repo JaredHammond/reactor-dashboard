@@ -4,20 +4,31 @@ import { LevelGauge, LevelGaugeProps } from './LevelGauge';
 const Card = styled.div`
     height: 300px;
     max-width: 400px;
-    background: lightcoral;
+    background: whitesmoke;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 3rem 1fr;
 `
 const StyledLevelGauge = styled(LevelGauge)`
-    width: 75%;
+    width: 85%;
     margin: auto;
     grid-column: 1;
+    grid-row: 2;
 `
+const CardTitle = styled.h2`
+    grid-row: 1;
+    grid-column: 1 / 3;
+    text-align: center;
+    font-size: 1.5rem;
+    color: green;
+`
+
+
 const props: LevelGaugeProps = {
     vesselId: 'titan',
     data: {
-      level: 5,
+      level: 45,
       minLevel: 0,
       maxLevel: 100
     },
@@ -32,7 +43,9 @@ const props: LevelGaugeProps = {
 export const ReactorInfo = () => {
     return (
         <Card>
+            <CardTitle>Titan 2</CardTitle>
             <StyledLevelGauge {...props} />
+            
         </Card>
     )
 }
