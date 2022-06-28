@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { LevelGauge } from '../components/LevelGauge';
-import { greatestIndex } from 'd3';
+import { LevelGauge, LevelGaugeProps } from '../components/LevelGauge';
+
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -24,7 +24,7 @@ Low.args = {
     maxLevel: 100
   },
   styles: {
-    gaugeColor: 'green',
+    gaugeColor: '#257a22',
     textColor: '#10570e',
     textColor2: '#67c663',
     textSize: '1.5rem'
@@ -40,7 +40,7 @@ Half.args = {
     maxLevel: 100
   },
   styles: {
-    gaugeColor: 'green',
+    gaugeColor: '#257a22',
     textColor: '#10570e',
     textColor2: '#67c663',
     textSize: '1.5rem'
@@ -56,7 +56,7 @@ Full.args = {
     maxLevel: 100
   },
   styles: {
-    gaugeColor: 'green',
+    gaugeColor: '#257a22',
     textColor: '#10570e',
     textColor2: '#67c663',
     textSize: '1.5rem'
@@ -72,7 +72,7 @@ LargerScale.args = {
     maxLevel: 400,
   },
   styles: {
-    gaugeColor: 'green',
+    gaugeColor: '#257a22',
     textColor: '#10570e',
     textColor2: '#96ef93',
     textSize: '1.5rem',
